@@ -5,6 +5,6 @@
   "password" : "None",
   "python"   : "C:\\Users\\averma.XEBIAINDIA\\AppData\\Local\\Continuum\\anaconda3",
   "version"  : "3.6.5",
-  "script"   : "script.py",
-  "method"   : "main"
+  "script"   : "score.py",
+  "method"   : "run"
 }
