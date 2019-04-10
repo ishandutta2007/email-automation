@@ -1,16 +1,4 @@
-﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="Main_1"
- xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
- xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
- xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
- xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
- xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json"
- xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
- xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
- xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
- xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
- xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
- xmlns:ui="http://schemas.uipath.com/workflow/activities"
- xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="804,716" sap2010:WorkflowViewState.IdRef="Main_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -36,6 +24,7 @@
       <x:String>System.Windows.Markup</x:String>
       <x:String>Newtonsoft.Json.Linq</x:String>
       <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Xml.Serialization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -61,143 +50,150 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>UiPath.Python</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart sap:VirtualizedContainerService.HintSize="764,636" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="njl:JObject" Name="ConfigObject" />
       <Variable x:TypeArguments="x:Int32" Name="ArgumentA" />
       <Variable x:TypeArguments="x:Int32" Name="ArgumentB" />
       <Variable x:TypeArguments="x:String" Name="PythonScriptResult" />
       <Variable x:TypeArguments="x:String" Name="GlobalPath" />
+      <Variable x:TypeArguments="x:String" Name="MailBody" />
+      <Variable x:TypeArguments="x:String" Name="Subject" />
+      <Variable x:TypeArguments="x:String" Name="MailID" />
+      <Variable x:TypeArguments="x:String" Name="Priority" />
+      <Variable x:TypeArguments="x:String" Name="CompanyName" />
+      <Variable x:TypeArguments="x:String" Name="Date1" />
+      <Variable x:TypeArguments="x:String" Name="Time1" />
+      <Variable x:TypeArguments="sd:DataTable" Name="DT" />
     </Flowchart.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+        <av:Point x:Key="ShapeLocation">10,22.5</av:Point>
+        <av:Size x:Key="ShapeSize">60,75</av:Size>
+        <x:Double x:Key="Width">750</x:Double>
+        <av:PointCollection x:Key="ConnectorLocation">70,60 100,60 100,110 120,110</av:PointCollection>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_1">
-        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CheckConfig workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="CheckConfig.xaml">
-          <ui:InvokeWorkflowFile.Arguments>
-            <OutArgument x:TypeArguments="njl:JObject" x:Key="outConfigObject">[ConfigObject]</OutArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="outGlobalPath">[GlobalPath]</OutArgument>
-          </ui:InvokeWorkflowFile.Arguments>
-        </ui:InvokeWorkflowFile>
-        <FlowStep.Next>
-          <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_6">
-            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke InputWorkflow workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="InputWorkflow.xaml">
-              <ui:InvokeWorkflowFile.Arguments>
-                <OutArgument x:TypeArguments="x:Int32" x:Key="outArgumentA">[ArgumentA]</OutArgument>
-                <OutArgument x:TypeArguments="x:Int32" x:Key="outArgumentB">[ArgumentB]</OutArgument>
-              </ui:InvokeWorkflowFile.Arguments>
-            </ui:InvokeWorkflowFile>
-            <FlowStep.Next>
-              <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_9">
-                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Python workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Python.xaml">
-                  <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="x:String" x:Key="inPythonPath">[ConfigObject("python").ToString]</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="inPythonScript">[ConfigObject("script").ToString]</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="inPythonMethod">[ConfigObject("method").ToString]</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="inGlobalPath">[GlobalPath]</InArgument>
-                    <InArgument x:TypeArguments="x:Int32" x:Key="inPythonArgument">[ArgumentA]</InArgument>
-                    <InArgument x:TypeArguments="x:Int32" x:Key="inPythonArgumentB">[ArgumentB]</InArgument>
-                    <OutArgument x:TypeArguments="x:String" x:Key="outPythonScriptResult">[PythonScriptResult]</OutArgument>
-                  </ui:InvokeWorkflowFile.Arguments>
-                </ui:InvokeWorkflowFile>
-                <FlowStep.Next>
-                  <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_11">
-                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke OutputWorkflow workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="OutputWorkflow.xaml">
-                      <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="x:String" x:Key="inPythonScriptResult">[PythonScriptResult]</InArgument>
-                      </ui:InvokeWorkflowFile.Arguments>
-                    </ui:InvokeWorkflowFile>
-                  </FlowStep>
-                </FlowStep.Next>
-              </FlowStep>
-            </FlowStep.Next>
-          </FlowStep>
-        </FlowStep.Next>
-      </FlowStep>
+      <x:Reference>__ReferenceID2</x:Reference>
     </Flowchart.StartNode>
+    <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">120,84.5</av:Point>
+          <av:Size x:Key="ShapeSize">200,51</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">320,110 410,110 410,164.5</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CheckConfig workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="CheckConfig.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <OutArgument x:TypeArguments="njl:JObject" x:Key="outConfigObject">[ConfigObject]</OutArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="outGlobalPath">[GlobalPath]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:InvokeWorkflowFile>
+      <FlowStep.Next>
+        <FlowStep x:Name="__ReferenceID1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">310,164.5</av:Point>
+              <av:Size x:Key="ShapeSize">200,51</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">510,190 610,190 610,254.5</av:PointCollection>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Dictionary2DT workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Dictionary2DT.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="inEmailID" />
+              <InArgument x:TypeArguments="x:String" x:Key="inSenderName" />
+              <InArgument x:TypeArguments="x:String" x:Key="inDomain" />
+              <InArgument x:TypeArguments="x:String" x:Key="inSubject" />
+              <InArgument x:TypeArguments="x:String" x:Key="inBody" />
+              <InArgument x:TypeArguments="x:String" x:Key="inPrediction" />
+              <InArgument x:TypeArguments="x:String" x:Key="inConfidence" />
+              <InArgument x:TypeArguments="x:String" x:Key="inAddMoreData">True</InArgument>
+              <OutArgument x:TypeArguments="sd:DataTable" x:Key="outDT">[DT]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="inDate" />
+              <InArgument x:TypeArguments="x:String" x:Key="inTime" />
+              <InArgument x:TypeArguments="x:String" x:Key="inPriority" />
+              <InArgument x:TypeArguments="x:String" x:Key="inCompanyName" />
+              <InArgument x:TypeArguments="x:Int32" x:Key="inSerialNumber" />
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+          <FlowStep.Next>
+            <FlowStep x:Name="__ReferenceID0">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <av:Point x:Key="ShapeLocation">510,254.5</av:Point>
+                  <av:Size x:Key="ShapeSize">200,51</av:Size>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke MailWorkflow workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="MailWorkflow.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <OutArgument x:TypeArguments="x:String" x:Key="outMailBody">[MailBody]</OutArgument>
+                  <OutArgument x:TypeArguments="x:String" x:Key="OutSubject">[Subject]</OutArgument>
+                  <OutArgument x:TypeArguments="x:String" x:Key="outMailID">[MailID]</OutArgument>
+                  <OutArgument x:TypeArguments="x:String" x:Key="outPriority">[Priority]</OutArgument>
+                  <OutArgument x:TypeArguments="x:String" x:Key="outDomain" />
+                  <OutArgument x:TypeArguments="x:String" x:Key="outCompanyName">[CompanyName]</OutArgument>
+                  <OutArgument x:TypeArguments="x:String" x:Key="outDate">[Date1]</OutArgument>
+                  <OutArgument x:TypeArguments="x:String" x:Key="outtime">[Time1]</OutArgument>
+                  <OutArgument x:TypeArguments="x:String" x:Key="outSenderName" />
+                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="outDT">[DT]</InOutArgument>
+                  <OutArgument x:TypeArguments="x:String" x:Key="outPrediction" />
+                  <OutArgument x:TypeArguments="x:String" x:Key="outConfidence" />
+                  <InArgument x:TypeArguments="njl:JObject" x:Key="inConfigObject">[ConfigObject]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="inGlobalPath">[GlobalPath]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+            </FlowStep>
+          </FlowStep.Next>
+        </FlowStep>
+      </FlowStep.Next>
+    </FlowStep>
     <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
-    <x:Reference>__ReferenceID2</x:Reference>
-    <x:Reference>__ReferenceID3</x:Reference>
-    <sads:DebugSymbol.Symbol>d0VDOlxVc2Vyc1xhdmVybWEuWEVCSUFJTkRJQVxEb2N1bWVudHNcVWlQYXRoXFVpUGF0aF9UZW1wbGF0ZVxNYWluLnhhbWwVQgN7DwIBAUwJUSECARlUDVklAgETXBFmKQIBBmkVbS0CAQJPS09XAgEdTlBOXgIBG0y8AUzOAQIBGlZNVlgCARdXTVdYAgEVVMIBVNYBAgEUY1VjYAIBEV9TX3QCARBeUV5yAgEPYVFhXQIBDWBTYHQCAQxiVGJfAgEKZFtkbwIBCFy/AVzMAQIBB2tda3ECAQRpzAFp4QECAQM=</sads:DebugSymbol.Symbol>
+    <FlowStep>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">40,424.02</av:Point>
+          <av:Size x:Key="ShapeSize">200,51</av:Size>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Python workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Python.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="inPythonPath" />
+          <InArgument x:TypeArguments="x:String" x:Key="inPythonScript" />
+          <InArgument x:TypeArguments="x:String" x:Key="inPythonMethod" />
+          <InArgument x:TypeArguments="x:String" x:Key="inGlobalPath" />
+          <InArgument x:TypeArguments="x:Int32" x:Key="inPythonArgument" />
+          <InArgument x:TypeArguments="x:Int32" x:Key="inPythonArgumentB" />
+          <OutArgument x:TypeArguments="x:String" x:Key="outPythonScriptResult" />
+        </ui:InvokeWorkflowFile.Arguments>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:InvokeWorkflowFile>
+    </FlowStep>
   </Flowchart>
-  <sap2010:WorkflowViewState.ViewStateManager>
-    <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="InvokeWorkflowFile_1" sap:VirtualizedContainerService.HintSize="200,52">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="InvokeWorkflowFile_6" sap:VirtualizedContainerService.HintSize="200,52">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="InvokeWorkflowFile_8" sap:VirtualizedContainerService.HintSize="200,52">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="InvokeWorkflowFile_10" sap:VirtualizedContainerService.HintSize="200,52">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="FlowStep_11">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">130,184</av:Point>
-            <av:Size x:Key="ShapeSize">200,52</av:Size>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="FlowStep_9">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">330,114</av:Point>
-            <av:Size x:Key="ShapeSize">200,52</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">430,166 430,210 330,210</av:PointCollection>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="FlowStep_6">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">520,34</av:Point>
-            <av:Size x:Key="ShapeSize">200,52</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">620,86 620,140 530,140</av:PointCollection>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="FlowStep_1">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">120,34.5</av:Point>
-            <av:Size x:Key="ShapeSize">200,52</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">320,60.5 350,60.5 350,60 520,60</av:PointCollection>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="764,636">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-            <av:Point x:Key="ShapeLocation">10,22.5</av:Point>
-            <av:Size x:Key="ShapeSize">60,75</av:Size>
-            <x:Double x:Key="Width">750</x:Double>
-            <av:PointCollection x:Key="ConnectorLocation">70,60 100,60 100,60.5 120,60.5</av:PointCollection>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Main_1" sap:VirtualizedContainerService.HintSize="844,716" />
-    </sap2010:ViewStateManager>
-  </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>
