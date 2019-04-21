@@ -9,7 +9,9 @@ transformer = TfidfTransformer()
 trainedVectorizer = CountVectorizer(decode_error='replace',vocabulary=vocab)
 
 def run(raw_data):
-    vectorString  = trainedVectorizer.fit_transform([str(data)])
+    y_hat = dict()
+    vectorString  = trainedVectorizer.fit_transform([str(raw_data)])
     transformedString = transformer.fit_transform(vectorString)
-    y_hat = model.predict(transformedString)
-    return(str(y_hat))
+    y_hat['prediction']  = model.predict(transformedString).astype(dtype=float)[0]
+    y_hat['probability'] = model.predict_proba(transformedString).astype(dtype=float).tolist()
+    return(json.dumps(y_hat))
