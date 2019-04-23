@@ -6,5 +6,6 @@
   "python"   : "C:\\Users\\vbhardwaj\\AppData\\Local\\Continuum\\anaconda3",
   "version"  : "3.6.5",
   "script"   : "score.py",
+  "check"    : "init"
   "method"   : "run"
 }
