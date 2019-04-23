@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1044,1596</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>908,1595</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckConfig_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -64,7 +64,7 @@
       <AssemblyReference>UiPath.Python</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CheckConfig" sap:VirtualizedContainerService.HintSize="1004,1516" sap2010:WorkflowViewState.IdRef="Sequence_3">
+  <Sequence DisplayName="CheckConfig" sap:VirtualizedContainerService.HintSize="868,1515" sap2010:WorkflowViewState.IdRef="Sequence_3">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="GlobalPath" />
     </Sequence.Variables>
@@ -73,8 +73,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="982,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="Stage 1: Check Config : START" />
-    <Assign sap:VirtualizedContainerService.HintSize="982,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="846,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="Stage 1: Check Config : START" />
+    <Assign sap:VirtualizedContainerService.HintSize="846,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[GlobalPath]</OutArgument>
       </Assign.To>
@@ -82,7 +82,7 @@
         <InArgument x:TypeArguments="x:String">[Environment.CurrentDirectory.ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="982,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign sap:VirtualizedContainerService.HintSize="846,60" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[outGlobalPath]</OutArgument>
       </Assign.To>
@@ -90,7 +90,7 @@
         <InArgument x:TypeArguments="x:String">[Environment.CurrentDirectory.ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[Directory.GetFiles(GlobalPath).Count&gt;1]" sap:VirtualizedContainerService.HintSize="982,989" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[Directory.GetFiles(GlobalPath).Count&gt;1]" sap:VirtualizedContainerService.HintSize="846,989" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="621,841" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
@@ -133,6 +133,7 @@
                           <ui:InvokeWorkflowFile.Arguments>
                             <OutArgument x:TypeArguments="njl:JObject" x:Key="outConfigObject">[outConfigObject]</OutArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="inConfigFilePath">[FileName]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="inGlobalPath">[outGlobalPath]</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                       </Sequence>
@@ -155,7 +156,7 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -166,6 +167,6 @@
         </Sequence>
       </If.Else>
     </If>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="982,62" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Stage 1: Check Config : END" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="846,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Stage 1: Check Config : END" />
   </Sequence>
 </Activity>

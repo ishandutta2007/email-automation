@@ -8,5 +8,6 @@
   "script"      : "score.py",
   "check"       : "init",
   "method"      : "run",
-  "runtimepath" : "//Users//abhishekverma//Applications//email-automation//"
+  "runtimepath" : "D:\\Demo\\Email-Automation-master\\"
+
 }

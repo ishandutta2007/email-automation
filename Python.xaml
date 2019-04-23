@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Python" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:p="http://schemas.uipath.com/workflow/activities/python" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Python" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:p="http://schemas.uipath.com/workflow/activities/python" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="inPythonPath" Type="InArgument(x:String)" />
     <x:Property Name="inPythonScript" Type="InArgument(x:String)" />
@@ -6,11 +6,12 @@
     <x:Property Name="inGlobalPath" Type="InArgument(x:String)" />
     <x:Property Name="inPythonArgument" Type="InArgument(x:String)" />
     <x:Property Name="outPythonScriptResult" Type="OutArgument(x:String)" />
+    <x:Property Name="inPythonInitMethod" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>412,747</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>512,1077</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Python_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -69,7 +70,7 @@
       <AssemblyReference>Newtonsoft.Json</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Python" sap:VirtualizedContainerService.HintSize="372,667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="Python" sap:VirtualizedContainerService.HintSize="472,997" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="prediction" />
     </Sequence.Variables>
@@ -78,13 +79,13 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <p:PythonScope DisplayName="Python Scope" sap:VirtualizedContainerService.HintSize="350,543" sap2010:WorkflowViewState.IdRef="PythonScope_2" Path="[inPythonPath]" Version="Python_36">
+    <p:PythonScope DisplayName="Python Scope" sap:VirtualizedContainerService.HintSize="450,873" sap2010:WorkflowViewState.IdRef="PythonScope_2" Path="[inPythonPath]" Version="Python_36">
       <p:PythonScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="PythonEngineSessionProperty" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="336,507" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="436,837" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <Sequence.Variables>
               <Variable x:TypeArguments="p:PythonObject" Name="PythonScriptObject" />
               <Variable x:TypeArguments="p:PythonObject" Name="PythonReturnObject" />
@@ -97,11 +98,32 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <p:LoadScript Code="{x:Null}" DisplayName="Load Python Script" sap:VirtualizedContainerService.HintSize="314,59" sap2010:WorkflowViewState.IdRef="LoadScript_2" Result="[PythonScriptObject]" ScriptFile="[inGlobalPath + &quot;\&quot; + inPythonScript]" />
-            <p:InvokeMethod DisplayName="Invoke Python Method" sap:VirtualizedContainerService.HintSize="314,22" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" Instance="[PythonScriptObject]" Name="[inPythonMethod]" Parameters="[{inPythonArgument}]" Result="[PythonReturnObject]" />
-            <p:GetObject x:TypeArguments="x:String" DisplayName="Get Python Object" sap:VirtualizedContainerService.HintSize="314,22" sap2010:WorkflowViewState.IdRef="GetObject`1_6" PythonObject="[PythonReturnObject]" Result="[outPythonScriptResult]" />
-            <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="314,59" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_2" JsonObject="[jsonobj]" JsonString="[outPythonScriptResult]" />
-            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="314,61" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="[jsonobj(&quot;prediction&quot;).ToString]" />
+            <p:LoadScript Code="{x:Null}" DisplayName="Load Python Script" sap:VirtualizedContainerService.HintSize="414,59" sap2010:WorkflowViewState.IdRef="LoadScript_2" Result="[PythonScriptObject]" ScriptFile="[inGlobalPath + &quot;\&quot; + inPythonScript]" />
+            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="414,290" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+              <TryCatch.Try>
+                <p:InvokeMethod DisplayName="Invoke Init Method" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="InvokeMethod_3" Instance="[PythonScriptObject]" Name="[inPythonInitMethod]" Parameters="[{inPythonArgument}]" Result="[PythonReturnObject]" />
+              </TryCatch.Try>
+              <TryCatch.Catches>
+                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,128" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ActivityAction x:TypeArguments="s:Exception">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                    </ActivityAction.Argument>
+                    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="314,59" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Python Init Method Failed&quot;]" TopMost="True" />
+                  </ActivityAction>
+                </Catch>
+              </TryCatch.Catches>
+            </TryCatch>
+            <p:InvokeMethod DisplayName="Invoke Run Method" sap:VirtualizedContainerService.HintSize="414,22" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" Instance="[PythonScriptObject]" Name="[inPythonMethod]" Parameters="[{inPythonArgument}]" Result="[PythonReturnObject]" />
+            <p:GetObject x:TypeArguments="x:String" DisplayName="Get Python Object" sap:VirtualizedContainerService.HintSize="414,22" sap2010:WorkflowViewState.IdRef="GetObject`1_6" PythonObject="[PythonReturnObject]" Result="[outPythonScriptResult]" />
+            <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="414,59" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_2" JsonObject="[jsonobj]" JsonString="[outPythonScriptResult]" />
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="414,61" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="[jsonobj(&quot;prediction&quot;).ToString]" />
           </Sequence>
         </ActivityAction>
       </p:PythonScope.Body>

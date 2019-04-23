@@ -171,29 +171,5 @@
     </FlowStep>
     <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
-    <FlowStep>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">40,424.02</av:Point>
-          <av:Size x:Key="ShapeSize">200,51</av:Size>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Python workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Python.xaml">
-        <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="inPythonPath" />
-          <InArgument x:TypeArguments="x:String" x:Key="inPythonScript" />
-          <InArgument x:TypeArguments="x:String" x:Key="inPythonMethod" />
-          <InArgument x:TypeArguments="x:String" x:Key="inGlobalPath" />
-          <InArgument x:TypeArguments="x:Int32" x:Key="inPythonArgument" />
-          <InArgument x:TypeArguments="x:Int32" x:Key="inPythonArgumentB" />
-          <OutArgument x:TypeArguments="x:String" x:Key="outPythonScriptResult" />
-        </ui:InvokeWorkflowFile.Arguments>
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </ui:InvokeWorkflowFile>
-    </FlowStep>
   </Flowchart>
 </Activity>
