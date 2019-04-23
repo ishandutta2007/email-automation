@@ -10,11 +10,12 @@ def init():
     global vocab, model, trainedVectorizer, transformer
 
     # find script location
-    path = json.load(open('config.uipath'))['runtimepath']
+    #path = json.load(open('config.uipath'))['runtimepath']
+    path = "C:\Users\vbhardwaj\Documents\GitHub\Email-Automation\"
 
     # load machine learning model and meta data
-    vocab =  pickle.load(open(path +'/TfidfVectorizerModel.pkl', 'rb'))
-    model = joblib.load(open(path +'/MultinomialNBModel.pkl','rb'))
+    vocab =  pickle.load(open(path +'TfidfVectorizerModel.pkl', 'rb'))
+    model = joblib.load(open(path +'MultinomialNBModel.pkl','rb'))
 
     # init stages using meta data
     trainedVectorizer = CountVectorizer(decode_error='replace',vocabulary=vocab)
