@@ -1,2 +1,7 @@
 machine-learning-code/.ipynb_checkpoints/*
 .DS_Store
+.local/UiPath_Template.nuget.props
+.local/AllDependencies.json
+.local/nuget.cache
+.local/PackageCache.json
+.local/ProjectSettings.json
