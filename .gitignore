@@ -5,3 +5,4 @@ machine-learning-code/.ipynb_checkpoints/*
 .local/nuget.cache
 .local/PackageCache.json
 .local/ProjectSettings.json
+.local/nuget.cache.backup

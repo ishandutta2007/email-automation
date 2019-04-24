@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>908,1595</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>908,1393</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckConfig_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -64,7 +64,7 @@
       <AssemblyReference>UiPath.Python</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CheckConfig" sap:VirtualizedContainerService.HintSize="868,1515" sap2010:WorkflowViewState.IdRef="Sequence_3">
+  <Sequence DisplayName="CheckConfig" sap:VirtualizedContainerService.HintSize="868,1313" sap2010:WorkflowViewState.IdRef="Sequence_3">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="GlobalPath" />
     </Sequence.Variables>
@@ -73,7 +73,6 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="846,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="Stage 1: Check Config : START" />
     <Assign sap:VirtualizedContainerService.HintSize="846,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[GlobalPath]</OutArgument>
@@ -167,6 +166,5 @@
         </Sequence>
       </If.Else>
     </If>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="846,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Stage 1: Check Config : END" />
   </Sequence>
 </Activity>

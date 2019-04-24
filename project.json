@@ -1,6 +1,6 @@
 {
-  "name": "UiPath_Template",
-  "description": "Template process for UiPath.",
+  "name": "Email-Automation",
+  "description": "100% email automation using Machine Learning and UiPath as well as BI reporting.",
   "main": "Main.xaml",
   "dependencies": {
     "Microsoft.Activities.Extensions": "2.0.6.9",
