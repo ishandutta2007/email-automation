@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>908,1393</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>908,1391</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckConfig_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -62,9 +62,10 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>Newtonsoft.Json</AssemblyReference>
       <AssemblyReference>UiPath.Python</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CheckConfig" sap:VirtualizedContainerService.HintSize="868,1313" sap2010:WorkflowViewState.IdRef="Sequence_3">
+  <Sequence DisplayName="CheckConfig" sap:VirtualizedContainerService.HintSize="868,1311" sap2010:WorkflowViewState.IdRef="Sequence_3">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="GlobalPath" />
     </Sequence.Variables>
@@ -89,21 +90,21 @@
         <InArgument x:TypeArguments="x:String">[Environment.CurrentDirectory.ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[Directory.GetFiles(GlobalPath).Count&gt;1]" sap:VirtualizedContainerService.HintSize="846,989" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[Directory.GetFiles(GlobalPath).Count&gt;1]" sap:VirtualizedContainerService.HintSize="846,987" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="621,841" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence sap:VirtualizedContainerService.HintSize="621,839" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="599,717" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Directory.GetFiles(GlobalPath)]">
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="599,715" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Directory.GetFiles(GlobalPath)]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:String">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:String" Name="FileName" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="583,583" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="583,581" sap2010:WorkflowViewState.IdRef="Sequence_1">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="ExtensionName" />
                   </Sequence.Variables>
@@ -120,7 +121,7 @@
                       <InArgument x:TypeArguments="x:String">[new FileInfo(FileName).Extension.Replace(".","")]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <If Condition="[ExtensionName.Trim.ToLower.Equals(&quot;uipath&quot;)]" sap:VirtualizedContainerService.HintSize="561,359" sap2010:WorkflowViewState.IdRef="If_2">
+                  <If Condition="[ExtensionName.Trim.ToLower.Equals(&quot;file&quot;)]" sap:VirtualizedContainerService.HintSize="561,357" sap2010:WorkflowViewState.IdRef="If_2">
                     <If.Then>
                       <Sequence sap:VirtualizedContainerService.HintSize="336,211" sap2010:WorkflowViewState.IdRef="Sequence_4">
                         <sap:WorkflowViewStateService.ViewState>

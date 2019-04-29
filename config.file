@@ -3,10 +3,10 @@
   "email"      : "abhishek_verma@hotmail.com",
   "github"     : "llabhishekll",
   "password"   : "None",
-  "python"     : "C:\\Users\\vbhardwaj\\AppData\\Local\\Continuum\\anaconda3",
+  "python"     : "C:\\Users\\averma.XEBIAINDIA\\AppData\\Local\\Continuum\\anaconda3",
   "version"    : "3.6.5",
   "script"     : "score.py",
   "initmethod" : "init",
   "runmethod"  : "run",
-  "filepath"   : "C:\\Users\\vbhardwaj\\Documents\\GitHub\\Email-Automation\\"
+  "filepath"   : "C:\\Users\\averma.XEBIAINDIA\\Documents\\GitHub\\email-automation\\"
 }
