@@ -34,7 +34,7 @@ def run(raw_data):
 
     # save result into y_hat
     status["prediction"]  = model.predict(featureVector_fit).astype(dtype=float)[0]
-    status["probability"] = max(model.predict_proba(featureVector_fit).astype(dtype=float).tolist()[0])
+    status["confidence"] = max(model.predict_proba(featureVector_fit).astype(dtype=float).tolist()[0])
 
     # return JSON
     return(json.dumps(status))
