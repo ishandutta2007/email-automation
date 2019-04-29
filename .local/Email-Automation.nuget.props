@@ -3,9 +3,9 @@
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
-    <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">C:\Users\vbhardwaj\Documents\GitHub\Email-Automation\.local\AllDependencies.json</ProjectAssetsFile>
+    <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">C:\Users\averma.XEBIAINDIA\Documents\GitHub\email-automation\.local\AllDependencies.json</ProjectAssetsFile>
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\vbhardwaj\.nuget\packages\</NuGetPackageFolders>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\averma.XEBIAINDIA\.nuget\packages\</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">Unknown</NuGetProjectStyle>
     <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">4.9.4</NuGetToolVersion>
   </PropertyGroup>
@@ -13,7 +13,7 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgExtended_Wpf_Toolkit Condition=" '$(PkgExtended_Wpf_Toolkit)' == '' ">C:\Users\vbhardwaj\.nuget\packages\extended.wpf.toolkit\2.8.0</PkgExtended_Wpf_Toolkit>
-    <PkgMicrosoft_Activities_Extensions Condition=" '$(PkgMicrosoft_Activities_Extensions)' == '' ">C:\Users\vbhardwaj\.nuget\packages\microsoft.activities.extensions\2.0.6.9</PkgMicrosoft_Activities_Extensions>
+    <PkgExtended_Wpf_Toolkit Condition=" '$(PkgExtended_Wpf_Toolkit)' == '' ">C:\Users\averma.XEBIAINDIA\.nuget\packages\extended.wpf.toolkit\2.8.0</PkgExtended_Wpf_Toolkit>
+    <PkgMicrosoft_Activities_Extensions Condition=" '$(PkgMicrosoft_Activities_Extensions)' == '' ">C:\Users\averma.XEBIAINDIA\.nuget\packages\microsoft.activities.extensions\2.0.6.9</PkgMicrosoft_Activities_Extensions>
   </PropertyGroup>
 </Project>

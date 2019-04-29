@@ -4,12 +4,15 @@ from sklearn.externals import joblib
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 
 # define init function
-def init(filepath):
+def init(filepath=None):
     # define global variable
     global vocab, model, trainedVectorizer, transformer, path
 
-    # find script location
-    path = filepath
+    # find scipt location
+    if(filepath != None):
+        path = filepath
+    else:
+        path="./"
 
     # load machine learning model and meta data
     vocab =  pickle.load(open(path + "TfidfVectorizerModel.pkl", "rb"))
@@ -22,24 +25,23 @@ def init(filepath):
 # define run function to execute the ml model
 def run(raw_data):
 
-    # define y_hat (result) dictionary
-    y_hat = dict()
+    # define return status dict
+    status = dict()
 
     # transform feature to feature vector
     featureVector = trainedVectorizer.fit_transform([raw_data])
     featureVector_fit = transformer.fit_transform(featureVector)
 
     # save result into y_hat
-    y_hat["prediction"]  = model.predict(featureVector_fit).astype(dtype=float)[0]
-    y_hat["probability"] = max(max(model.predict_proba(featureVector_fit).astype(dtype=float).tolist()))
+    status["prediction"]  = model.predict(featureVector_fit).astype(dtype=float)[0]
+    status["probability"] = max(model.predict_proba(featureVector_fit).astype(dtype=float).tolist()[0])
 
     # return JSON
-    return(json.dumps(y_hat))
+    return(json.dumps(status))
 
 
 if __name__ == "__main__":
+    init()
     test = "This is to check machine learning model"
-    filepath = json.load(open('config.uipath'))['filepath']
-    init(filepath)
     result = run(test)
     print("Data: {}\nResult: {}".format(test,result))
