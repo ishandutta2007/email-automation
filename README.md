@@ -180,7 +180,7 @@ plt.show()
 ```
 
 
-![png](output_14_0.png)
+![png](output_13_0.png)
 
 
 
